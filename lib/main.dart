@@ -4,6 +4,13 @@ const kCircleAvatarHeight = 88.0;
 const kCircleAvatarWidth = 88.0;
 const kInnerNumberStyle = TextStyle(fontSize: 38);
 const kInnerLetterStyle = TextStyle(fontSize: 17, letterSpacing: 2.0);
+const kSpaceBetweenRow = SizedBox(
+  height: 15,
+);
+const callerIconSize = 40.0;
+const List<Icons> icons = [
+  Icon(Icons.star),
+];
 
 void main() {
   runApp(const MaterialApp(
@@ -59,6 +66,7 @@ class MainScreen extends StatelessWidget {
               ),
             ],
           ),
+          kSpaceBetweenRow,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
@@ -67,7 +75,10 @@ class MainScreen extends StatelessWidget {
                   '4',
                   style: kInnerNumberStyle,
                 ),
-                Text('GHI'),
+                Text(
+                  'GHI',
+                  style: kInnerLetterStyle,
+                ),
               ),
               SizedBox(
                 width: 25,
@@ -97,6 +108,7 @@ class MainScreen extends StatelessWidget {
               ),
             ],
           ),
+          kSpaceBetweenRow,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
@@ -105,7 +117,10 @@ class MainScreen extends StatelessWidget {
                   '7',
                   style: kInnerNumberStyle,
                 ),
-                Text('PQRS'),
+                Text(
+                  'PQRS',
+                  style: kInnerLetterStyle,
+                ),
               ),
               SizedBox(
                 width: 25,
@@ -135,15 +150,15 @@ class MainScreen extends StatelessWidget {
               ),
             ],
           ),
+          kSpaceBetweenRow,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              CircleAvatar(
+              CenterCircleAvatar(
                 Text(
                   '*',
-                  style: kInnerNumberStyle,
+                  style: TextStyle(fontSize: 50),
                 ),
-                Text(''),
               ),
               SizedBox(
                 width: 25,
@@ -155,26 +170,64 @@ class MainScreen extends StatelessWidget {
                 ),
                 Text(
                   '+',
-                  style: kInnerLetterStyle,
+                  style: TextStyle(fontSize: 25),
                 ),
               ),
               SizedBox(
                 width: 25,
               ),
-              CircleAvatar(
-                Text(
-                  '#',
-                  style: kInnerNumberStyle,
-                ),
-                Text(
-                  '',
-                  style: kInnerLetterStyle,
+              CenterCircleAvatar(Text(
+                '#',
+                style: kInnerNumberStyle,
+              )),
+            ],
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                child: const Center(
+                    child: Icon(
+                  Icons.call,
+                  color: Colors.white,
+                  size: callerIconSize,
+                )),
+                height: kCircleAvatarHeight,
+                width: kCircleAvatarWidth,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xFF35c759),
                 ),
               ),
             ],
           ),
         ],
       )),
+    );
+  }
+}
+
+class CenterCircleAvatar extends StatelessWidget {
+  final Widget numberText;
+
+  const CenterCircleAvatar(
+    this.numberText, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(child: numberText),
+      height: kCircleAvatarHeight,
+      width: kCircleAvatarWidth,
+      decoration: const BoxDecoration(
+        color: Color(0xFFe5e5e5),
+        shape: BoxShape.circle,
+      ),
     );
   }
 }
