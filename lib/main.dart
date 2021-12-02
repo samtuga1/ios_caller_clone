@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-const kCircleAvatarHeight = 80.0;
-const kCircleAvatarWidth = 80.0;
+const kCircleAvatarHeight = 88.0;
+const kCircleAvatarWidth = 88.0;
+const kInnerNumberStyle = TextStyle(fontSize: 38);
+const kInnerLetterStyle = TextStyle(fontSize: 17, letterSpacing: 2.0);
 
 void main() {
   runApp(const MaterialApp(
@@ -22,17 +24,155 @@ class MainScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              CircleAvatar(),
+              CircleAvatar(
+                Text(
+                  '1',
+                  style: kInnerNumberStyle,
+                ),
+                Text(''),
+              ),
               SizedBox(
                 width: 25,
               ),
-              CircleAvatar(),
+              CircleAvatar(
+                Text(
+                  '2',
+                  style: kInnerNumberStyle,
+                ),
+                Text(
+                  'ABC',
+                  style: kInnerLetterStyle,
+                ),
+              ),
               SizedBox(
                 width: 25,
               ),
-              CircleAvatar(),
+              CircleAvatar(
+                Text(
+                  '3',
+                  style: kInnerNumberStyle,
+                ),
+                Text(
+                  'DEF',
+                  style: kInnerLetterStyle,
+                ),
+              ),
             ],
-          )
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircleAvatar(
+                Text(
+                  '4',
+                  style: kInnerNumberStyle,
+                ),
+                Text('GHI'),
+              ),
+              SizedBox(
+                width: 25,
+              ),
+              CircleAvatar(
+                Text(
+                  '5',
+                  style: kInnerNumberStyle,
+                ),
+                Text(
+                  'JKL',
+                  style: kInnerLetterStyle,
+                ),
+              ),
+              SizedBox(
+                width: 25,
+              ),
+              CircleAvatar(
+                Text(
+                  '6',
+                  style: kInnerNumberStyle,
+                ),
+                Text(
+                  'MNO',
+                  style: kInnerLetterStyle,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircleAvatar(
+                Text(
+                  '7',
+                  style: kInnerNumberStyle,
+                ),
+                Text('PQRS'),
+              ),
+              SizedBox(
+                width: 25,
+              ),
+              CircleAvatar(
+                Text(
+                  '8',
+                  style: kInnerNumberStyle,
+                ),
+                Text(
+                  'TUV',
+                  style: kInnerLetterStyle,
+                ),
+              ),
+              SizedBox(
+                width: 25,
+              ),
+              CircleAvatar(
+                Text(
+                  '9',
+                  style: kInnerNumberStyle,
+                ),
+                Text(
+                  'WXYZ',
+                  style: kInnerLetterStyle,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircleAvatar(
+                Text(
+                  '*',
+                  style: kInnerNumberStyle,
+                ),
+                Text(''),
+              ),
+              SizedBox(
+                width: 25,
+              ),
+              CircleAvatar(
+                Text(
+                  '0',
+                  style: kInnerNumberStyle,
+                ),
+                Text(
+                  '+',
+                  style: kInnerLetterStyle,
+                ),
+              ),
+              SizedBox(
+                width: 25,
+              ),
+              CircleAvatar(
+                Text(
+                  '#',
+                  style: kInnerNumberStyle,
+                ),
+                Text(
+                  '',
+                  style: kInnerLetterStyle,
+                ),
+              ),
+            ],
+          ),
         ],
       )),
     );
@@ -40,23 +180,20 @@ class MainScreen extends StatelessWidget {
 }
 
 class CircleAvatar extends StatelessWidget {
-  const CircleAvatar({
-    Key? key,
-  }) : super(key: key);
+  final Widget numberText;
+  final Widget lettersText;
+
+  const CircleAvatar(this.numberText, this.lettersText, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: const [
-          SizedBox(
-            height: 18,
-          ),
-          Text(
-            '1',
-            style: TextStyle(fontSize: 35),
-          ),
-          Text(''),
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          numberText,
+          lettersText,
         ],
       ),
       width: kCircleAvatarWidth,
