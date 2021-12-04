@@ -1,16 +1,37 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-const kCircleAvatarHeight = 88.0;
-const kCircleAvatarWidth = 88.0;
+const kCircleAvatarHeight = 80.0;
+const kCircleAvatarWidth = 80.0;
 const kInnerNumberStyle = TextStyle(fontSize: 38);
 const kInnerLetterStyle = TextStyle(fontSize: 17, letterSpacing: 2.0);
 const kSpaceBetweenRow = SizedBox(
   height: 15,
 );
-const callerIconSize = 40.0;
-const List<Icons> icons = [
-  Icon(Icons.star),
-];
+const callerIconSize = 38.0;
+const Color colour = Color(0xFFa2a2a2);
+const double kIconsSize = 32.0;
+
+getIconsList() {
+  List<Icon> icons = [
+    const Icon(
+      CupertinoIcons.star_fill,
+      color: colour,
+      size: kIconsSize,
+    ),
+    const Icon(
+      CupertinoIcons.time_solid,
+      color: colour,
+      size: kIconsSize,
+    ),
+    const Icon(CupertinoIcons.person_crop_circle_fill,
+        color: colour, size: kIconsSize),
+    const Icon(CupertinoIcons.circle_grid_3x3_fill,
+        color: colour, size: kIconsSize),
+    const Icon(Icons.voicemail_sharp, color: colour, size: kIconsSize)
+  ];
+  return icons;
+}
 
 void main() {
   runApp(const MaterialApp(
@@ -26,7 +47,7 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -191,7 +212,7 @@ class MainScreen extends StatelessWidget {
               Container(
                 child: const Center(
                     child: Icon(
-                  Icons.call,
+                  CupertinoIcons.phone_fill,
                   color: Colors.white,
                   size: callerIconSize,
                 )),
@@ -204,9 +225,39 @@ class MainScreen extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(
+            height: 30,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: getIconsList(),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: const [
+              IconNames('Favourites'),
+              IconNames('Recents'),
+              IconNames('Contacts'),
+              IconNames('Keypad'),
+              IconNames('Voicemail'),
+            ],
+          ),
         ],
       )),
     );
+  }
+}
+
+class IconNames extends StatelessWidget {
+  final String name;
+  const IconNames(
+    this.name, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(name);
   }
 }
 
